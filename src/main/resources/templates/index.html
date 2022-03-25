@@ -17,11 +17,11 @@
     <div class="form-group">
         <form method="post" th:action="@{/upload}" th:object="${formInput}" enctype="multipart/form-data">
             <label for="generationTag" class="form-label">Генерируемый тег</label>
-            <input type="text" id="generationTag" name="generationTag" class="form-control">
+            <input type="text" id="generationTag" name="generationTag" class="form-control" placeholder="tag">
             <label for="uniqueTags" class="form-label">Уникальные теги</label>
-            <textarea id="uniqueTags" rows="5" name="uniqueTags" class="form-control"></textarea>
+            <textarea id="uniqueTags" rows="5" name="uniqueTags" class="form-control" placeholder="tag1, tag2"></textarea>
             <label for="generationCount" class="form-label">Количество генераций</label>
-            <input type="text" id="generationCount" name="generationCount" class="form-control">
+            <input type="text" id="generationCount" name="generationCount" class="form-control" placeholder="12">
             <p></p>
             <div class="input-group">
                 <input type="file"  name="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
