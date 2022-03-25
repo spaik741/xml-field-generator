@@ -12,7 +12,7 @@ import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static org.apache.commons.lang3.StringUtils.substringBefore;
 
 @Component
-public class XmlCopyTagsImpl implements XmlCopyTags{
+public class XmlCopyTagsImpl implements XmlCopyTags {
 
     public String generateCopy(InputStream is, String genTag, List<String> uniqueTagList, int count) throws IOException {
         String xml = IOUtils.toString(is, StandardCharsets.UTF_8.name());
@@ -35,7 +35,21 @@ public class XmlCopyTagsImpl implements XmlCopyTags{
     private String generateUniqueVal(String text, List<String> uniqueTagList, int counter) {
         StringBuilder generateText = new StringBuilder();
         String subText = text;
-        for (String uniqueTag: uniqueTagList) {
+
+//        for (int i = 0; i < uniqueTagList.size(); i++) {
+//            String uniqueTag = uniqueTagList.get(i);
+//            generateText.append(substringBefore(subText, startTag(uniqueTag)));
+//            generateText.append(startTag(uniqueTag));
+//            String innerTagText = substringBefore(substringAfter(subText, startTag(uniqueTag)), finishTag(uniqueTag));
+//            generateText.append(Integer.parseInt(innerTagText) + counter);
+//            generateText.append(finishTag(uniqueTag));
+//            subText = substringAfter(subText, finishTag(uniqueTag));
+//            if (i == uniqueTagList.size()){
+//                generateText.append(subText);
+//            }
+//        }
+
+        for (String uniqueTag : uniqueTagList) {
             generateText.append(substringBefore(subText, startTag(uniqueTag)));
             generateText.append(startTag(uniqueTag));
             String innerTagText = substringBefore(substringAfter(subText, startTag(uniqueTag)), finishTag(uniqueTag));
@@ -43,14 +57,15 @@ public class XmlCopyTagsImpl implements XmlCopyTags{
             generateText.append(finishTag(uniqueTag));
             subText = substringAfter(subText, finishTag(uniqueTag));
         }
+        generateText.append(subText);
         return generateText.toString();
     }
 
-    private String startTag(String t){
+    private String startTag(String t) {
         return "<" + t + ">";
     }
 
-    private String finishTag(String t){
+    private String finishTag(String t) {
         return "</" + t + ">";
     }
 }
