@@ -64,6 +64,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>xml-generation</finalName>
     </build>
 
 </project>
