@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Xml copy</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<div class="container">
+
+    <h2>Загрузить xml файл</h2>
+    <div class="form-group">
+        <form method="post" th:action="@{/upload}" th:object="${formInput}" enctype="multipart/form-data">
+            <label for="generationTag" class="form-label">Генерируемый тег</label>
+            <input type="text" id="generationTag" name="generationTag" class="form-control" placeholder="tag">
+            <label for="uniqueTags" class="form-label">Уникальные теги</label>
+            <textarea id="uniqueTags" rows="5" name="uniqueTags" class="form-control" placeholder="tag1, tag2"></textarea>
+            <label for="generationCount" class="form-label">Количество генераций</label>
+            <input type="text" id="generationCount" name="generationCount" class="form-control" placeholder="12">
+            <p></p>
+            <div class="input-group">
+                <input type="file"  name="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Загрузить файл</button>
+            </div>
+<!--            <input type="file" name="file" class="form-control-file">-->
+<!--            <button type="submit" class="btn btn-primary">Загрузить файл</button>-->
+        </form>
+        <p></p>
+        <div class="card">
+            <div class="card-body">
+                <p th:text="${text}"></p>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="btn btn-primary mt-2" th:href="@{/download}">Cкачать результат </a>
+<!--    <p th:text="${text}"></p>-->
+<!--    <span th:text="${text}" class="badge bg-light text-dark"></span>-->
+</div>
+</body>
+</html>
