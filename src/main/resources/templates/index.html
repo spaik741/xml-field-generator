@@ -21,10 +21,10 @@
             <label for="uniqueTags" class="form-label">Уникальные теги</label>
             <textarea id="uniqueTags" rows="5" name="uniqueTags" class="form-control" placeholder="tag1, tag2"></textarea>
             <label for="generationCount" class="form-label">Количество генераций</label>
-            <input type="text" id="generationCount" name="generationCount" class="form-control" placeholder="12">
+            <input type="number" id="generationCount" name="generationCount" class="form-control" placeholder="12">
             <p></p>
             <div class="input-group">
-                <input type="file"  name="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                <input type="file" multiple name="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                 <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Загрузить файл</button>
             </div>
 <!--            <input type="file" name="file" class="form-control-file">-->
@@ -38,7 +38,9 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn-primary mt-2" th:href="@{/download}">Cкачать результат </a>
+    <a href="#" class="btn btn-primary mt-2" th:href="@{/download}">Cкачать результат (XML)</a>
+    <a href="#" class="btn btn-primary mt-2" th:href="@{/downloadZip}">Cкачать результат (ZIP)</a>
+    <a href="#" class="btn btn-danger mt-2" th:href="@{/clean}">Очистить результат</a>
 <!--    <p th:text="${text}"></p>-->
 <!--    <span th:text="${text}" class="badge bg-light text-dark"></span>-->
 </div>

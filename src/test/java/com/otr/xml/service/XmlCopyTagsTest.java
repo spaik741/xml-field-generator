@@ -30,7 +30,7 @@ class XmlCopyTagsTest {
                 "<AGE>7</AGE>" +
                 "</CAT>";
         InputStream is = new ByteArrayInputStream(xml.getBytes());
-        String xmlGen = copyTags.generateCopy(is, "CAT", Collections.singletonList("AGE"), 1);
+        String xmlGen = copyTags.generateCopy(is, "CAT", Collections.singletonList("AGE"), 1, 0);
         assertThat(xml2.equals(xmlGen));
     }
 
