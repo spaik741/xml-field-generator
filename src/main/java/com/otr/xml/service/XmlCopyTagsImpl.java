@@ -20,6 +20,15 @@ import static org.apache.commons.lang3.StringUtils.substringBefore;
 @Component
 public class XmlCopyTagsImpl implements XmlCopyTags {
 
+    /**
+     * генерация копий для несколких файлов
+     *
+     * @param files - файлы пришедшие из контроллера
+     * @param genTag - генерируемый тег
+     * @param uniqueTagList  - список ген. тегов с уникальным значением внутри genTag
+     * @param count - количество генераций
+     * @return - список текстов помещаемых в xml файлы
+     */
     public List<String> generateCopyList(MultipartFile[] files, String genTag, List<String> uniqueTagList, int count) {
         List<String> xmlList = new ArrayList<>();
         for (int i = 0; i < files.length; i++) {
@@ -41,6 +50,7 @@ public class XmlCopyTagsImpl implements XmlCopyTags {
         return xmlList;
     }
 
+    // все стринги xml (ген.файлы) кладутся в зип
     public File toWrapUp(String fileName, List<String> xmlStrings) {
         FileOutputStream fos = null;
         ZipOutputStream zipOutputStream = null;
@@ -69,6 +79,16 @@ public class XmlCopyTagsImpl implements XmlCopyTags {
         return fileZip;
     }
 
+    /**
+     * генерация копий для несколких файлов
+     *
+     * @param is - стрим текста одного файла для генерации
+     * @param genTag - генерируемый тег
+     * @param uniqueTagList  - список ген. тегов с уникальным значением внутри genTag
+     * @param countGen - количество генераций
+     * @param numFile - если файлов несколько то тут будет + номер итерации файла для уникальности значения
+     * @return - текст для xml
+     */
     public String generateCopy(InputStream is, String genTag, List<String> uniqueTagList, int countGen, int numFile) throws IOException {
         String xml = IOUtils.toString(is, StandardCharsets.UTF_8.name());
         // разбиваем на части xml, чтобы потом заново склеить
@@ -87,6 +107,7 @@ public class XmlCopyTagsImpl implements XmlCopyTags {
         return generateXml.toString();
     }
 
+    // генерирует уникальный тег (только для числовых значений)
     private String generateUniqueVal(String text, List<String> uniqueTagList, int counter, int numFile) {
         StringBuilder generateText = new StringBuilder();
         String subText = text;
