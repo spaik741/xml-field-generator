@@ -8,7 +8,9 @@ import java.io.InputStream;
 import java.util.List;
 
 public interface XmlCopyTags {
-    String generateCopy(InputStream is, String genTag, List<String> uniqueTagList, int count , int numFile) throws IOException;
+    String generateCopy(InputStream is, String genTag, List<String> uniqueTagList, int count, int numFile) throws IOException;
+
     List<String> generateCopyList(MultipartFile[] files, String genTag, List<String> uniqueTagList, int count);
+
     File toWrapUp(String fileName, List<String> xmlStrings);
 }

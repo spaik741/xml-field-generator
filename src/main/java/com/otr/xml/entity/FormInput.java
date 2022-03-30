@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -15,7 +13,7 @@ public class FormInput {
     private String uniqueTags;
     private String generationCount;
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return StringUtils.isBlank(generationTag) || StringUtils.isBlank(uniqueTags) || StringUtils.isBlank(generationCount);
     }
 }
